@@ -9,5 +9,10 @@ class Pokemon extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $fillable = ['nombre', 'tipo1', 'tipo2', 'grupo_huevo', 'numero', 'img'];
+    protected $fillable = ['nombre', 'user_id', 'tipo1', 'tipo2', 'grupo_huevo', 'numero', 'img'];
+
+    public function user()
+    {
+        return $this->belongsTo(user::class);
+    }
 }

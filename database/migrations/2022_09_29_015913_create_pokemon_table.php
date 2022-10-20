@@ -15,6 +15,7 @@ class CreatePokemonTable extends Migration
     {
         Schema::create('pokemon', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascade();
             $table->string('nombre');
             $table->string('tipo1');
             $table->string('tipo2');

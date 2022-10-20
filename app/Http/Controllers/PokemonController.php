@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pokemon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PokemonController extends Controller
 {
@@ -15,7 +16,9 @@ class PokemonController extends Controller
     public function index()
     {
         //
-        $pokemons = Pokemon::all();
+        //$pokemons = Pokemon::all();
+        $user = Auth::user();
+        $pokemons = $user->pokemons;
         return view('pokemon.pokemon_index', compact('pokemons'));
     }
 
@@ -48,7 +51,7 @@ class PokemonController extends Controller
             'img' => ['required', 'url'],
         ]);
 
-
+        $request->merge(['user_id' => Auth::id()]);
         Pokemon::create($request->all());
 
         return redirect('/pokemon');
