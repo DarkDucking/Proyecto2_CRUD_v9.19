@@ -9,7 +9,11 @@
     <title>{{ $titulo }}</title>
 </head>
 <body>
-    <div class="boton-enlace">
+    <x-navigationmenu>
+        <a href="/dashboard">
+            <input type="submit" value="Regresar al Dashboard">
+        </a>
+
         <a href="/pokemon">
             <input type="submit" value="Ver Pokemons">
         </a>
@@ -17,7 +21,7 @@
         <a href="/pokemon/create">
             <input type="submit" value="Registrar Pokemon">
         </a>
-    </div>
+    </x-navigationmenu>
 
     {{ $slot }}
 </body>
